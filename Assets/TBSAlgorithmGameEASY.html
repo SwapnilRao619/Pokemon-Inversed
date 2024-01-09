@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    @font-face {
+    font-family: f1;
+    src: url(f1.ttf);
+    }
+
+    @font-face {
+    font-family: f2;
+    src: url(f2.ttf);
+    }
+
+    body{
+        background: url(p1.png);
+        background-size: cover;
+        margin:0;
+    }
+
+    #playOverlay{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        visibility: visible;
+        transition: visibility 0.5s, opacity 0.5s;
+    }
+
+    #play{
+        font-family: f1;
+        padding: 5px 10px;
+        font-size: 32px;
+        background-color: yellow;
+        color:black;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    #play:hover{
+        background-color: white;
+        color: black;
+    }
+
+    #title{
+    font-size: 30px;
+    font-family: f1;
+    color: black;
+    text-align: center;
+    align-self: center;
+    }
+
+    #battle{
+        padding-top: 5px;
+        display: flex;
+    }
+
+    #c1{
+        font-size: 10px;
+        color: #ff2f00;
+        font-family: f2;
+        text-align: center;
+        margin: 10px;
+        margin-left: 100px;
+        padding: 25px;
+        padding-left: 20px;
+        padding-right: 20px;
+        border: 3px solid red;
+        background-color: #ccac1e;
+        border-radius: 15px;
+    }
+
+    #c2{
+        font-size: 10px;
+        color: #ff2f00;
+        font-family: f2;
+        text-align: center;
+        margin: 10px;
+        padding: 25px;
+        padding-left: 20px;
+        padding-right: 20px;
+        margin-right: 110px;
+        margin-left: auto;
+        border: 3px solid red;
+        background-color: #ccac1e;
+        border-radius: 15px;
+    }
+
+    .hb{
+        height: 20px;
+        background-color: #5cb85c;
+        margin-bottom: 10px;
+    }
+
+    #b1{
+        font-family: f2;
+        font-size: 15px;
+        background-color: yellow;
+        color:black;
+        border:none;
+        padding: 10px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    #b1:hover{
+        background-color: white;
+        color:black;
+    }
+
+    #b2{
+        font-family: f2;
+        font-size: 15px;
+        padding: 10px;
+        background-color: yellow;
+        color:black;
+        border:none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    #b2:hover{
+        background-color: white;
+        color:black;
+    }
+
+    #b3{
+        font-family: f2;
+        font-size: 15px;
+        padding: 10px;
+        background-color: yellow;
+        color:black;
+        border:none;
+        border-radius: 10px;
+    }
+
+    #b4{
+        font-family: f2;
+        font-size: 15px;
+        padding: 10px;
+        background-color: yellow;
+        color:black;
+        border:none;
+        border-radius: 10px;
+    }
+
+</style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon Inversed</title>
+    <link rel="icon" type="image/png" href="p.png">
+</head>
+<body>
+
+    <video id="gov1" controls style="display: none;">
+        <source src="2.mp4" type="video/mp4">
+    </video>
+
+    <video id="gov2" controls style="display: none;">
+        <source src="1.mp4" type="video/mp4">
+    </video>
+
+    <audio id="startbgm" loop>
+        <source src="1.mp3" type="audio/mp3">
+    </audio>
+
+    <div id="play">
+        <button id="play" onclick="startbgm()">PLAY</button>
+    </div>
+
+    <div id="title">
+    <h1 id="heading">POKEMON INVERSED</h1>
+    </div>
+    <div id="battle">
+        <div id="c1">
+            <h1 id="c1n">Paul<br>(You)</h1>
+            <img id="c1i" src="p7.png">
+            <br><br>
+            <div id="hb1" class="hb"></div>
+            <button id="b1" onclick="pa(1)">Knuckle<br> Smash</button>
+            <button id="b2" onclick="pa(2)">Bleeding<br> Lips</button>
+         </div>
+    
+         <div id="c2">
+            <h1 id="c1n">Ash<br>(Opponent)</h1>
+            <img id="c2i" src="p8.png">
+            <br><br>
+            <div id="hb2" class="hb"></div>
+            <button id="b3">Yo Poke Is<br>In Me Ball</button>
+            <button id="b4">Go<br> Pikachu</button>
+         </div>
+    </div>
+    <script>
+        let ph=100;
+        let oh=100;
+        let count=0;
+
+        function hbu(){
+            document.getElementById('hb1').style.width=ph+'%';
+            document.getElementById('hb2').style.width=oh+'%';
+            cgo();
+        }
+
+        function pa(move){
+            if(move==1){
+                const pd=Math.floor(Math.random()*20)+10;
+                oh-=pd;
+
+                const od=Math.floor(Math.random()*20)+10;
+                ph-=od;
+
+                hbu();
+            }
+            
+            if(move==2){
+                count++;
+                if(count==1){
+                    const pd=0;
+                    oh-=pd;
+
+                    const od=25;
+                    ph+=od;
+
+                    hbu();
+                }
+                else if(count>1 && count<5){
+                    return;
+                }
+                else{
+                    ph-=150;
+                    hbu();
+                }
+            }
+        }
+
+        function cgo(){
+            if(ph<=0 || oh<=0){
+                if(ph<=0){
+                    var he=document.getElementById('heading');
+                    if(he){
+                    he.style.color='red';
+                    }
+                    var ie=document.getElementById("c1i");
+                    if(ie){
+                        ie.src='p5.png';
+                    }
+                    var video1 = document.getElementById("gov1");
+                    video1.style.display = "block";
+                    video1.play();
+                    setTimeout(rg,9005);
+                }
+                else{
+                    var he=document.getElementById('heading');
+                    if(he){
+                    he.style.color='red';
+                    }
+                    var ie=document.getElementById("c2i");
+                    if(ie){
+                        ie.src='p6.png';
+                    }
+                    var video2 = document.getElementById("gov2");
+                    video2.style.display = "block";
+                    video2.play();
+                    setTimeout(rg,10000);
+                }
+            }
+        }
+
+        function rg(){
+            location.reload();
+        }
+
+        function startbgm(){
+        var t3=document.getElementById('play');
+        if(t3){
+            play.innerHtml='';
+        }
+        const audio = document.getElementById('startbgm');
+        audio.play();
+        const play1 = document.getElementById('play');
+        play1.style.visibility = 'hidden';
+        play1.style.opacity = '0';
+        }
+    </script>
+</body>
+</html>

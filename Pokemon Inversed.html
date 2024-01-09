@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    body{
+        background: url(Assets/p2.png);
+        background-size: cover;
+        margin: 0;
+        overflow: hidden;
+    }
+
+    @font-face{
+    font-family: f1;
+    src: url(Assets/f1.ttf);
+    }
+
+    #playOverlay{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        visibility: visible;
+        transition: visibility 0.5s, opacity 0.5s;
+    }
+
+    #play{
+        font-family: f1;
+        padding: 5px 10px;
+        font-size: 32px;
+        background-color: yellow;
+        color:black;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    #play:hover{
+        background-color: white;
+        color: black;
+    }
+
+    #title{
+    font-size: 20px;
+    font-family: f1;
+    color: black;
+    padding-left: 100px;
+    padding-top: 15px;
+    align-self: center; 
+    }
+
+    #button1{
+        font-family: f1;
+        position:absolute;
+        top: 50%;
+        left: 10%;
+        transform: translate(-50%, -50%);
+        margin: 0 auto;
+        padding: 20px 30px;
+        font-size: 22px;
+        background-color: yellow;
+        color:black;
+        border:none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    #button1:hover{
+        background-color: white;
+        color:black;
+    }
+
+    #button2{
+        font-family: f1;
+        position:absolute;
+        top: 75%;
+        left: 10%;
+        transform: translate(-50%, -50%);
+        margin: 0 auto;
+        padding: 20px 30px;
+        font-size: 22px;
+        background-color: yellow;
+        color:black;
+        border:none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    #button2:hover{
+        background-color: white;
+        color:black;
+    }
+</style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon Inversed</title>
+    <link rel="icon" type="image/png" href="Assets/p.png">
+</head>
+<body>
+    <audio id="startbgm" loop>
+        <source src="Assets/1.mp3" type="audio/mp3">
+    </audio>
+
+    <div id="play">
+        <button id="play" onclick="startbgm()">PLAY</button>
+    </div>
+
+    <div id="title">
+        <h1>POKEMON INVERSED</h1>
+    </div>
+    <button id="button1" onclick="easy()">EASY</button>
+    <button id="button2" onclick="hard()">HARD</button>
+    <script>
+        function easy(){
+            window.location.href = 'Assets/TBSAlgorithmGameEASY.html';
+        }
+        function hard(){
+            window.location.href = 'Assets/TBSAlgorithmGameHARD.html';
+        }
+
+        function startbgm(){
+        const audio = document.getElementById('startbgm');
+        audio.play();
+        const play1 = document.getElementById('play');
+        play1.style.visibility = 'hidden';
+        play1.style.opacity = '0';
+        }
+
+    </script>
+</body>
+</html>
